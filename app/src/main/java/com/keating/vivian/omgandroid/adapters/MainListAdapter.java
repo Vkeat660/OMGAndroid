@@ -4,7 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import com.keating.vivian.omgandroid.R;
 
@@ -46,9 +46,13 @@ public class MainListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row, parent, false);
         }
 
-        TextView imageTextView = (TextView) convertView.findViewById(R.id.text);
+        convertView.setMinimumHeight(parent.getMeasuredHeight());
+        ImageView imageView = (ImageView)  convertView.findViewById(R.id.image);
         String imageName = imageNames.get(position);
-        imageTextView.setText(imageName);
+        imageView.setImageResource(R.drawable.three);
+        imageView.getLayoutParams().height = parent.getMeasuredHeight();
+        imageView.getLayoutParams().width  = parent.getMeasuredWidth();
+        //imageView.setMinimumHeight(parent.getMeasuredHeight());
 
         return convertView;
     }
