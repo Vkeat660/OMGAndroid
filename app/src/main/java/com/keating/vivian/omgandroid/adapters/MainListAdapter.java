@@ -6,10 +6,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.keating.vivian.omgandroid.R;
-
-import java.util.List;
-
 
 /**
  * Created by Rainbow on 11/9/15.
@@ -45,15 +44,19 @@ public class MainListAdapter extends BaseAdapter {
         if (convertView == null) {
 
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row, parent, false);
+            convertView.setMinimumHeight(parent.getMeasuredHeight());
         }
 
-        convertView.setMinimumHeight(parent.getMeasuredHeight());
         ImageView imageView = (ImageView)  convertView.findViewById(R.id.image);
         int imageName = images[position];
-        imageView.setImageResource(imageName);
         imageView.getLayoutParams().height = parent.getMeasuredHeight();
-        imageView.getLayoutParams().width  = parent.getMeasuredWidth();
-        //imageView.setMinimumHeight(parent.getMeasuredHeight());
+        imageView.getLayoutParams().width = parent.getMeasuredWidth();
+
+        Glide.with(parent.getContext())
+                .load(imageName)
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                .into(imageView);
 
         return convertView;
     }
