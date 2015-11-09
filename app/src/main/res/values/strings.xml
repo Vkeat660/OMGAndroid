@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">OMG Android</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="imageNames">
+        <item>one</item>
+        <item>two</item>
+        <item>three</item>
+        <item>four</item>
+        <item>five</item>
+    </string-array>
+
+
 </resources>

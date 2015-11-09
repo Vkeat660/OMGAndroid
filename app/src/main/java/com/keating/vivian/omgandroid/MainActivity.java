@@ -1,10 +1,22 @@
 package com.keating.vivian.omgandroid;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
+
+import com.keating.vivian.omgandroid.adapters.MainListAdapter;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends Activity {
+
+
+    private List<String> imageNames;
+    private ListView listView;
+    private MainListAdapter mainListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +29,21 @@ public class MainActivity extends Activity {
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
                 | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+
+
+        listView = (ListView) findViewById(R.id.list_view);
+        Resources resources = getResources();
+        imageNames = Arrays.asList(resources.getStringArray(R.array.imageNames));
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        mainListAdapter = new MainListAdapter(imageNames);
+        listView.setAdapter(mainListAdapter);
+
+    }
 
 
 
