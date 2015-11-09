@@ -14,7 +14,7 @@ import java.util.List;
 public class MainActivity extends Activity {
 
 
-    private List<String> imageNames;
+    private int[] imageNames;
     private ListView listView;
     private MainListAdapter mainListAdapter;
 
@@ -32,15 +32,14 @@ public class MainActivity extends Activity {
 
 
         listView = (ListView) findViewById(R.id.list_view);
-        Resources resources = getResources();
-        imageNames = Arrays.asList(resources.getStringArray(R.array.imageNames));
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        mainListAdapter = new MainListAdapter(imageNames);
+        mainListAdapter = new MainListAdapter();
         listView.setAdapter(mainListAdapter);
 
     }

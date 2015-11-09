@@ -2,12 +2,12 @@
     <string name="app_name">OMG Android</string>
     <string name="action_settings">Settings</string>
 
-    <string-array name="imageNames">
-        <item>one</item>
-        <item>two</item>
-        <item>three</item>
-        <item>four</item>
-        <item>five</item>
-    </string-array>
+    <array name="imageNames">
+        <item>@drawable/one</item>
+        <item>@drawable/two</item>
+        <item>@drawable/three</item>
+        <item>@drawable/four</item>
+        <item>@drawable/five</item>
+    </array>
 
 </resources>

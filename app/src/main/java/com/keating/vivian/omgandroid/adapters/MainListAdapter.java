@@ -16,21 +16,22 @@ import java.util.List;
  */
 public class MainListAdapter extends BaseAdapter {
 
-    private final List<String> imageNames;
-
-    public MainListAdapter(List<String> imageNames) {
-        this.imageNames = imageNames;
-    }
-
+    private final int[] images = {
+            R.drawable.one,
+            R.drawable.two,
+            R.drawable.three,
+            R.drawable.four,
+            R.drawable.five
+    };
 
     @Override
     public int getCount() {
-        return imageNames.size();
+        return images.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return imageNames.get(position);
+        return images[position];
     }
 
     @Override
@@ -48,8 +49,8 @@ public class MainListAdapter extends BaseAdapter {
 
         convertView.setMinimumHeight(parent.getMeasuredHeight());
         ImageView imageView = (ImageView)  convertView.findViewById(R.id.image);
-        String imageName = imageNames.get(position);
-        imageView.setImageResource(R.drawable.three);
+        int imageName = images[position];
+        imageView.setImageResource(imageName);
         imageView.getLayoutParams().height = parent.getMeasuredHeight();
         imageView.getLayoutParams().width  = parent.getMeasuredWidth();
         //imageView.setMinimumHeight(parent.getMeasuredHeight());
