@@ -3,19 +3,22 @@ package com.keating.vivian.omgandroid;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ListView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.keating.vivian.omgandroid.adapters.MainListAdapter;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends Activity {
 
-   // private int[] imageNames;
     private ListView listView;
     private MainListAdapter mainListAdapter;
+
+    DisplayMetrics metrics;
+    int width = 0;
+    int height = 0;
 
     private final int[] images = {
             R.drawable.one,
@@ -39,6 +42,22 @@ public class MainActivity extends Activity {
 
 
         listView = (ListView) findViewById(R.id.list_view);
+
+        metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+
+        height = metrics.heightPixels;
+        width = metrics.widthPixels;
+
+        for(int image : images) {
+            Glide.with(this)
+                    .load(image)
+                    .override(width, height)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .preload();
+        }
+
 
     }
 

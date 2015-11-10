@@ -55,7 +55,7 @@ public class MainListAdapter extends BaseAdapter {
         Glide.with(parent.getContext())
                 .load(imageName)
                 .centerCrop()
-                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);
 
         return convertView;
