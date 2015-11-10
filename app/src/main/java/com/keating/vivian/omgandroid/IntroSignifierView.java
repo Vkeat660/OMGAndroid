@@ -13,17 +13,17 @@ import android.view.animation.LinearInterpolator;
 public class IntroSignifierView extends View {
 
     private Paint mArrowPaint;
-    private int mRadius = 50;
+    private int mRadius = 300;
 
     private SVGHelper.SvgPath mSignifierPath;
     private final Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
 
-    private int mArrowLength = 32;
-    private int mArrowHeight = 18;
+    private int mArrowLength = 300;  //32
+    private int mArrowHeight = 500; //18
 
 
-    private int mDuration = 4000;
+    private int mDuration = 32000;
 
     private float mWait;
 
@@ -34,7 +34,7 @@ public class IntroSignifierView extends View {
 
     public void setWait(float wait) {
         mWait = wait;
-        mSignifierPath.paint.setPathEffect(createConcaveArrowPathEffect(mSignifierPath.length, mWait, 32.0f));
+        mSignifierPath.paint.setPathEffect(createConcaveArrowPathEffect(mSignifierPath.length, mWait, 0.0f));
 
         invalidate();
     }
@@ -54,12 +54,14 @@ public class IntroSignifierView extends View {
     }
     private void init() {
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(2.0f);
+        mPaint.setStrokeWidth(64.0f);
         mPaint.setColor(getResources().getColor(R.color.paintColor));
+
+        setLayerType(LAYER_TYPE_SOFTWARE, null);
 
         createSignifierPath();
 
-        mWaitAnimator = ObjectAnimator.ofFloat(this, "wait", 1.0f, 0.0f).setDuration(mDuration);
+        mWaitAnimator = ObjectAnimator.ofFloat(this, "wait", 2.0f, 0.0f).setDuration(mDuration);
         mWaitAnimator.setRepeatMode(ObjectAnimator.RESTART);
         mWaitAnimator.setRepeatCount(ObjectAnimator.INFINITE);
         mWaitAnimator.setInterpolator(new LinearInterpolator());
@@ -70,8 +72,8 @@ public class IntroSignifierView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.translate(0.0f, getHeight() - getPaddingBottom() - mRadius * 3.0f);
-        canvas.translate(getWidth() / 2.0f - mRadius * 3.0f, mRadius);
+        //canvas.translate(0.0f,  - mRadius * 3.0f);
+        canvas.translate(getWidth() / 2.0f, -getHeight() /2.0f);
         canvas.drawPath(mSignifierPath.path, mSignifierPath.paint);
 
     }
@@ -82,7 +84,7 @@ public class IntroSignifierView extends View {
 
         Path p = new Path();
         p.moveTo(0.0f, 0.0f);
-        p.lineTo(mRadius * 6.0f, 0.0f);
+        p.lineTo(0.0f, mRadius * 6.0f);
 
         mSignifierPath = new SVGHelper.SvgPath(p, paint);
         mArrowPaint = new Paint(mSignifierPath.paint);
