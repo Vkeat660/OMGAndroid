@@ -10,18 +10,18 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.keating.vivian.omgandroid.R;
 
+import java.util.List;
+
 /**
  * Created by Rainbow on 11/9/15.
  */
 public class MainListAdapter extends BaseAdapter {
 
-    private final int[] images = {
-            R.drawable.one,
-            R.drawable.two,
-            R.drawable.three,
-            R.drawable.four,
-            R.drawable.five
-    };
+    private final int[] images;
+
+
+
+    public MainListAdapter(int[] images) { this.images = images; }
 
     @Override
     public int getCount() {

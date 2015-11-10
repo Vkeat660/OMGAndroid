@@ -18,6 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data android:name="com.keating.vivian.omgandroid.glideConfig.GlideConfiguration"
+            android:value="GlideModule"/>
     </application>
 
 </manifest>

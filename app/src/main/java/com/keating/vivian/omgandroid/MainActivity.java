@@ -13,10 +13,17 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-
-    private int[] imageNames;
+   // private int[] imageNames;
     private ListView listView;
     private MainListAdapter mainListAdapter;
+
+    private final int[] images = {
+            R.drawable.one,
+            R.drawable.two,
+            R.drawable.three,
+            R.drawable.four,
+            R.drawable.five
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +46,7 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
-        mainListAdapter = new MainListAdapter();
+        mainListAdapter = new MainListAdapter(images);
         listView.setAdapter(mainListAdapter);
 
     }
