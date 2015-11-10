@@ -23,7 +23,7 @@ public class MainListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return images.length + 1;
+        return images.length;
     }
 
     @Override
@@ -67,6 +67,7 @@ public class MainListAdapter extends BaseAdapter {
             int imageName = images[position - 1];
             imageView.getLayoutParams().height = parent.getMeasuredHeight();
             imageView.getLayoutParams().width = parent.getMeasuredWidth();
+
 
             Glide.with(parent.getContext())
                     .load(imageName)
