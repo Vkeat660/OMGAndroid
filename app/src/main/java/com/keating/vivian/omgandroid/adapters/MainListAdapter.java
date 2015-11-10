@@ -19,18 +19,16 @@ public class MainListAdapter extends BaseAdapter {
 
     private final int[] images;
 
-
-
     public MainListAdapter(int[] images) { this.images = images; }
 
     @Override
     public int getCount() {
-        return images.length;
+        return images.length + 1;
     }
 
     @Override
     public Object getItem(int position) {
-        return images[position];
+        return images[position - 1];
     }
 
     @Override
@@ -39,24 +37,44 @@ public class MainListAdapter extends BaseAdapter {
     }
 
     @Override
+    public int getViewTypeCount() {
+        return 2;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position == 0 ? 0 : 1;
+    }
+
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        if (convertView == null) {
+        int type = getItemViewType(position);
 
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row, parent, false);
+        if (convertView == null) {
+            if (type == 0) {
+                convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.header_row, parent, false);
+            } else {
+                convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row, parent, false);
+            }
             convertView.setMinimumHeight(parent.getMeasuredHeight());
         }
 
-        ImageView imageView = (ImageView)  convertView.findViewById(R.id.image);
-        int imageName = images[position];
-        imageView.getLayoutParams().height = parent.getMeasuredHeight();
-        imageView.getLayoutParams().width = parent.getMeasuredWidth();
+        if(type == 1){
 
-        Glide.with(parent.getContext())
-                .load(imageName)
-                .centerCrop()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(imageView);
+            ImageView imageView = (ImageView)  convertView.findViewById(R.id.image);
+            int imageName = images[position - 1];
+            imageView.getLayoutParams().height = parent.getMeasuredHeight();
+            imageView.getLayoutParams().width = parent.getMeasuredWidth();
+
+            Glide.with(parent.getContext())
+                    .load(imageName)
+                    .centerCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imageView);
+
+        }
 
         return convertView;
     }
