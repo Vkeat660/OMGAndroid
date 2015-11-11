@@ -83,8 +83,8 @@ public class IntroSignifierView extends View {
         paint.setStrokeWidth(paint.getStrokeWidth() * 4.0f);
 
         Path p = new Path();
-        p.moveTo(0.0f, 0.0f);
-        p.lineTo(0.0f, mRadius * 6.0f);
+        p.moveTo(0.0f, mRadius * 6.0f);
+        p.lineTo(0.0f, 0.0f);
 
         mSignifierPath = new SVGHelper.SvgPath(p, paint);
         mArrowPaint = new Paint(mSignifierPath.paint);

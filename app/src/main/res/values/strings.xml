@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">OMG Android</string>
     <string name="action_settings">Settings</string>
+    <string name="title_text">Android Demo</string>
 
     <array name="imageNames">
         <item>@drawable/one</item>

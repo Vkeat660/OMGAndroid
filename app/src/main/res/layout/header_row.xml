@@ -10,7 +10,18 @@
     android:background="@android:color/black"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <com.keating.vivian.omgandroid.TextViewPlus
+        style="@style/TitleText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:textAlignment="center"
+        android:text="@string/title_text"
+        android:textColor="@android:color/white"
+        android:background="@drawable/background"
+        android:gravity="center"
 
+        />
     <com.keating.vivian.omgandroid.IntroSignifierView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="0dp"
