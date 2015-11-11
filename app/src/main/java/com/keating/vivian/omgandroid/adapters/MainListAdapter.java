@@ -63,11 +63,8 @@ public class MainListAdapter extends BaseAdapter {
 
         if(type == 1){
 
-            ImageView imageView = (ImageView)  convertView.findViewById(R.id.image);
+            ImageView imageView = (ImageView)  convertView;
             int imageName = images[position - 1];
-            imageView.getLayoutParams().height = parent.getMeasuredHeight();
-            imageView.getLayoutParams().width = parent.getMeasuredWidth();
-
 
             Glide.with(parent.getContext())
                     .load(imageName)

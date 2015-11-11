@@ -46,10 +46,11 @@ public class MainActivity extends Activity {
 
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-
+        
         height = metrics.heightPixels;
         width = metrics.widthPixels;
+
+        Glide.get(this).setMemoryCategory(MemoryCategory.HIGH);
 
         for(int image : images) {
             Glide.with(this)
@@ -59,7 +60,6 @@ public class MainActivity extends Activity {
 
         }
 
-        Glide.get(this).setMemoryCategory(MemoryCategory.HIGH);
 
 
     }
