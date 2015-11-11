@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.MemoryCategory;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.keating.vivian.omgandroid.adapters.MainListAdapter;
 
@@ -54,9 +55,11 @@ public class MainActivity extends Activity {
             Glide.with(this)
                     .load(image)
                     .override(width, height)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .preload();
+                    .diskCacheStrategy(DiskCacheStrategy.ALL);
+
         }
+
+        Glide.get(this).setMemoryCategory(MemoryCategory.HIGH);
 
 
     }

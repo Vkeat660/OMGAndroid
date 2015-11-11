@@ -23,7 +23,7 @@ public class MainListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return images.length;
+        return images.length + 1;
     }
 
     @Override
